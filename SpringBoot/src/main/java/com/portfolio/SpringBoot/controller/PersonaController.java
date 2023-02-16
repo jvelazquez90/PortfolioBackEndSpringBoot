@@ -22,10 +22,17 @@ public class PersonaController {
     private IPersonaService interfacePersona;
 
     //--------------------------------------------------------------------------
-    @GetMapping("/personas/obtener")
+    @GetMapping("/personas/get")
     
     public List<Persona> getPersonas(){
         return interfacePersona.getPersonas();
+    }
+
+    //--------------------------------------------------------------------------
+    @GetMapping("/personas/obtener/{id}")
+    public Persona findPersona(@PathVariable Long id){
+        Persona persona = interfacePersona.findPersona(id);
+        return persona;
     }
     
     //--------------------------------------------------------------------------
