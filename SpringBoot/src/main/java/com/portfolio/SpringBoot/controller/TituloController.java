@@ -20,10 +20,17 @@ public class TituloController {
     private ITituloService interfaceTitulo;
 
     //--------------------------------------------------------------------------
-    @GetMapping("/titulo/obtener")
+    @GetMapping("/titulo/get")
     
     public List<Titulo> getTitulo(){
         return interfaceTitulo.getTitulo();
+    }
+    
+    //--------------------------------------------------------------------------
+    @GetMapping("/titulo/obtener/{id}")
+    public Titulo findTitulo(@PathVariable Long id){
+        Titulo titulo = interfaceTitulo.findTitulo(id);
+        return titulo;
     }
     
     //--------------------------------------------------------------------------

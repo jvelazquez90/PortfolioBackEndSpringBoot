@@ -21,10 +21,17 @@ public class ExperienciaController {
     private IExperienciaService interfaceExperiencia;
 
     //--------------------------------------------------------------------------
-    @GetMapping("/experiencia/obtener")
+    @GetMapping("/experiencia/get")
     
     public List<Experiencia> getExperiencia(){
         return interfaceExperiencia.getExperiencia();
+    }
+    
+    //--------------------------------------------------------------------------
+    @GetMapping("/experiencia/obtener/{id}")
+    public Experiencia findExperiencia(@PathVariable Long id){
+        Experiencia experiencia = interfaceExperiencia.findExperiencia(id);
+        return experiencia;
     }
     
     //--------------------------------------------------------------------------

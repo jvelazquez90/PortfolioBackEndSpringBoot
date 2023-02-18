@@ -20,10 +20,17 @@ public class RedesSocialesController {
     private IRedesSocialesService interfaceRedesSociales;
 
     //--------------------------------------------------------------------------
-    @GetMapping("/redesSociales/obtener")
+    @GetMapping("/redesSociales/get")
     
     public List<RedesSociales> getRedesSociales(){
         return interfaceRedesSociales.getRedesSociales();
+    }
+    
+    //--------------------------------------------------------------------------
+    @GetMapping("/redesSociales/obtener/{id}")
+    public RedesSociales findRedesSociales(@PathVariable Long id){
+        RedesSociales redesSociales = interfaceRedesSociales.findRedesSociales(id);
+        return redesSociales;
     }
     
     //--------------------------------------------------------------------------

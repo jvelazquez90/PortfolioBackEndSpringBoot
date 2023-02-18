@@ -20,10 +20,17 @@ public class AptitudController {
     private IAptitudesService interfaceAptitudes;
 
     //--------------------------------------------------------------------------
-    @GetMapping("/aptitudes/obtener")
+    @GetMapping("/aptitudes/get")
     
     public List<Aptitudes> getAptitudes(){
         return interfaceAptitudes.getAptitudes();
+    }
+    
+    //--------------------------------------------------------------------------
+    @GetMapping("/aptitudes/obtener/{id}")
+    public Aptitudes findAptitudes(@PathVariable Long id){
+        Aptitudes aptitudes = interfaceAptitudes.findAptitud(id);
+        return aptitudes;
     }
     
     //--------------------------------------------------------------------------

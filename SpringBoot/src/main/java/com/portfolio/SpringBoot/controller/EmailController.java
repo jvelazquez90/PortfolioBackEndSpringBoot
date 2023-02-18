@@ -21,10 +21,17 @@ public class EmailController {
     private IEmailService interfaceEmail;
 
     //--------------------------------------------------------------------------
-    @GetMapping("/email/obtener")
+    @GetMapping("/email/get")
     
     public List<Email> getPersonas(){
         return interfaceEmail.getEmail();
+    }
+    
+    //--------------------------------------------------------------------------
+    @GetMapping("/email/obtener/{id}")
+    public Email findPersona(@PathVariable Long id){
+        Email email = interfaceEmail.findEmail(id);
+        return email;
     }
     
     //--------------------------------------------------------------------------

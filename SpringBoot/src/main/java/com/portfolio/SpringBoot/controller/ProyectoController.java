@@ -21,10 +21,17 @@ public class ProyectoController {
     private IProyectoService interfaceProyecto;
 
     //--------------------------------------------------------------------------
-    @GetMapping("/proyecto/obtener")
+    @GetMapping("/proyecto/get")
     
     public List<Proyecto> getProyecto(){
         return interfaceProyecto.getProyecto();
+    }
+    
+    //--------------------------------------------------------------------------
+    @GetMapping("/proyecto/obtener/{id}")
+    public Proyecto findProyecto(@PathVariable Long id){
+        Proyecto proyecto = interfaceProyecto.findProyecto(id);
+        return proyecto;
     }
     
     //--------------------------------------------------------------------------

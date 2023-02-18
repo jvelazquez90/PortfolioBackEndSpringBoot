@@ -20,10 +20,17 @@ public class HabilidadesController {
     private IHabilidadesService interfaceHabilidades;
 
     //--------------------------------------------------------------------------
-    @GetMapping("/habilidades/obtener")
+    @GetMapping("/habilidades/get")
     
     public List<Habilidades> getHabilidades(){
         return interfaceHabilidades.getHabilidades();
+    }
+    
+    //--------------------------------------------------------------------------
+    @GetMapping("/habilidades/obtener/{id}")
+    public Habilidades findHabilidades(@PathVariable Long id){
+        Habilidades habilidades = interfaceHabilidades.findHabilidades(id);
+        return habilidades;
     }
     
     //--------------------------------------------------------------------------

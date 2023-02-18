@@ -21,10 +21,17 @@ public class EducacionController {
     private IEducacionService interfaceEducacion;
 
     //--------------------------------------------------------------------------
-    @GetMapping("/educacion/obtener")
+    @GetMapping("/educacion/get")
     
     public List<Educacion> getEducacion(){
         return interfaceEducacion.getEducacion();
+    }
+    
+    //--------------------------------------------------------------------------
+    @GetMapping("/educacion/obtener/{id}")
+    public Educacion findEducacion(@PathVariable Long id){
+        Educacion educacion = interfaceEducacion.findEducacion(id);
+        return educacion;
     }
     
     //--------------------------------------------------------------------------
