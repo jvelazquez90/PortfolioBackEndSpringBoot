@@ -1,5 +1,6 @@
 package com.portfolio.SpringBoot.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -51,4 +50,10 @@ public class Persona {
     
     @Column(name = "personacol", length = 45)
     private String personaCol;
+    
+    public String getFechaNacimiento(){
+        this.fechaNacimiento.getMonth();
+        SimpleDateFormat formato = new SimpleDateFormat("dd MMMM yyyy");
+        return formato.format(fechaNacimiento);
+    }
 }
