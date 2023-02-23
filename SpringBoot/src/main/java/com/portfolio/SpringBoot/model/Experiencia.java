@@ -1,5 +1,6 @@
 package com.portfolio.SpringBoot.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -52,4 +53,39 @@ public class Experiencia {
     @JoinColumn(name = "persona_id")
     Persona persona;
     
+    //--------------------------------------------------------------------------
+    // Convertir fecha ingreso
+    
+    public String getFechaIngreso(){
+        String nuevaFecha = convertirFechaIngreso().replace(" ", " de ");
+        return nuevaFecha;
+        
+    }
+    
+    public String convertirFechaIngreso(){
+        //this.fechaIngreso.getMonth();
+        SimpleDateFormat formato = new SimpleDateFormat("dd MMMM yyyy");
+        return formato.format(fechaIngreso);
+    }
+    
+    //--------------------------------------------------------------------------
+    // Convertir fecha egreso
+    
+    public String getFechaEgreso(){
+        String nuevaFecha = convertirFechaEgreso().replace(" ", " de ");
+        if (nuevaFecha != "")
+            return nuevaFecha;
+        else
+            return "Actualidad";
+        
+    }
+    
+    public String convertirFechaEgreso(){
+        //this.fechaIngreso.getMonth();
+        SimpleDateFormat formato = new SimpleDateFormat("dd MMMM yyyy");
+        if(fechaEgreso != null)
+            return formato.format(fechaEgreso);
+        else
+            return "";
+    }
 }

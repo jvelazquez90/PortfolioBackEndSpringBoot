@@ -51,7 +51,16 @@ public class Persona {
     @Column(name = "personacol", length = 45)
     private String personaCol;
     
+    //--------------------------------------------------------------------------
+    
+    // Se agregan metodos para presentar fecha
     public String getFechaNacimiento(){
+        String nuevaFecha = convertirFecha().replace(" ", " de ");
+        return nuevaFecha;
+        
+    }
+    
+    public String convertirFecha(){
         this.fechaNacimiento.getMonth();
         SimpleDateFormat formato = new SimpleDateFormat("dd MMMM yyyy");
         return formato.format(fechaNacimiento);
