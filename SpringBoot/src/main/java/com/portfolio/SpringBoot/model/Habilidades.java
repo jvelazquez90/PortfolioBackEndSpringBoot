@@ -21,7 +21,7 @@ public class Habilidades {
     @GeneratedValue(strategy=GenerationType.SEQUENCE)
     private Long id;
     
-    @Column(name = "clasificacion", length = 45)
+    @Column(name = "nombre", length = 45)
     private String nombre;
     
     @Column(name = "porcentaje")
