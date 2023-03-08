@@ -1,7 +1,7 @@
 package com.portfolio.SpringBoot.controller;
 
 import com.portfolio.SpringBoot.model.Persona;
-import com.portfolio.SpringBoot.service.IPersonaService;
+import com.portfolio.SpringBoot.service.PersonaService;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class PersonaController {
     
     @Autowired
     
-    private IPersonaService interfacePersona;
+    private PersonaService interfacePersona;
 
     //--------------------------------------------------------------------------
     @GetMapping("/personas/get")

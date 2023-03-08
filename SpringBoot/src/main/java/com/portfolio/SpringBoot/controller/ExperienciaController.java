@@ -1,7 +1,7 @@
 package com.portfolio.SpringBoot.controller;
 
 import com.portfolio.SpringBoot.model.Experiencia;
-import com.portfolio.SpringBoot.service.IExperienciaService;
+import com.portfolio.SpringBoot.service.ExperienciaService;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExperienciaController {
     
     @Autowired
-    private IExperienciaService interfaceExperiencia;
+    private ExperienciaService interfaceExperiencia;
 
     //--------------------------------------------------------------------------
     @GetMapping("/experiencia/get")

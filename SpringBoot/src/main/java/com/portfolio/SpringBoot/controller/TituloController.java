@@ -1,7 +1,7 @@
 package com.portfolio.SpringBoot.controller;
 
 import com.portfolio.SpringBoot.model.Titulo;
-import com.portfolio.SpringBoot.service.ITituloService;
+import com.portfolio.SpringBoot.service.TituloService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TituloController {
     
     @Autowired
-    private ITituloService interfaceTitulo;
+    private TituloService interfaceTitulo;
 
     //--------------------------------------------------------------------------
     @GetMapping("/titulo/get")

@@ -1,7 +1,7 @@
 package com.portfolio.SpringBoot.controller;
 
 import com.portfolio.SpringBoot.model.Email;
-import com.portfolio.SpringBoot.service.IEmailService;
+import com.portfolio.SpringBoot.service.EmailService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,7 +18,7 @@ public class EmailController {
     
     @Autowired
     
-    private IEmailService interfaceEmail;
+    private EmailService interfaceEmail;
 
     //--------------------------------------------------------------------------
     @GetMapping("/email/get")

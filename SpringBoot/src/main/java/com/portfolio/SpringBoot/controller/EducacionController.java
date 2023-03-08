@@ -1,7 +1,7 @@
 package com.portfolio.SpringBoot.controller;
 
 import com.portfolio.SpringBoot.model.Educacion;
-import com.portfolio.SpringBoot.service.IEducacionService;
+import com.portfolio.SpringBoot.service.EducacionService;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class EducacionController {
     
     @Autowired
-    private IEducacionService interfaceEducacion;
+    private EducacionService interfaceEducacion;
 
     //--------------------------------------------------------------------------
     @GetMapping("/educacion/get")

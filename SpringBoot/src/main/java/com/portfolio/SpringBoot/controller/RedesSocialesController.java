@@ -1,7 +1,7 @@
 package com.portfolio.SpringBoot.controller;
 
 import com.portfolio.SpringBoot.model.RedesSociales;
-import com.portfolio.SpringBoot.service.IRedesSocialesService;
+import com.portfolio.SpringBoot.service.RedesSocialesService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RedesSocialesController {
     
     @Autowired
-    private IRedesSocialesService interfaceRedesSociales;
+    private RedesSocialesService interfaceRedesSociales;
 
     //--------------------------------------------------------------------------
     @GetMapping("/redesSociales/get")

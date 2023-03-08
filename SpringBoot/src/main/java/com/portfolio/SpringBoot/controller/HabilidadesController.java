@@ -1,7 +1,7 @@
 package com.portfolio.SpringBoot.controller;
 
 import com.portfolio.SpringBoot.model.Habilidades;
-import com.portfolio.SpringBoot.service.IHabilidadesService;
+import com.portfolio.SpringBoot.service.HabilidadesService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HabilidadesController {
     
     @Autowired
-    private IHabilidadesService interfaceHabilidades;
+    private HabilidadesService interfaceHabilidades;
 
     //--------------------------------------------------------------------------
     @GetMapping("/habilidades/get")
