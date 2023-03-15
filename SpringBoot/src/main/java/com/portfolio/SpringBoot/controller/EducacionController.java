@@ -47,11 +47,11 @@ public class EducacionController {
     //--------------------------------------------------------------------------
     @DeleteMapping("/educacion/borrar/{id}")
     
-    public String deleteEducacion(@PathVariable Long id){
+    public void deleteEducacion(@PathVariable Long id){
         interfaceEducacion.deleteEducacion(id);
         
         // devuelve un string avisando si elimino correctamente
-        return "La educacion fue eliminada correctamente";
+        //return "La educacion fue eliminada correctamente";
     }
     
     //--------------------------------------------------------------------------
