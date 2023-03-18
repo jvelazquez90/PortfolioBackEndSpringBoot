@@ -34,9 +34,14 @@ public class Educacion {
     @Column(name = "lugar", length = 45)
     private String lugar;
     
+    @Column(name = "persona_id")
+    private int persona_id = 1;
+    
     // muchos estudios pueden pertenecer a una pesona
+    /*
     @ManyToOne
     @JoinColumn(name = "persona_id")
     Persona persona;
+*/
     
 }

@@ -5,6 +5,7 @@ import com.portfolio.SpringBoot.repository.EducacionRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 public class EducacionService implements IEducacionService{
@@ -21,7 +22,7 @@ public class EducacionService implements IEducacionService{
 
     //--------------------------------------------------------------------------
     @Override
-    public void saveEducacion(Educacion educacion) {
+    public void saveEducacion(@RequestBody Educacion educacion) {
         educacionRepository.save(educacion);
     }
 

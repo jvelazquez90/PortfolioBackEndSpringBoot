@@ -37,11 +37,11 @@ public class EducacionController {
     //--------------------------------------------------------------------------
     @PostMapping("/educacion/crear")
     
-    public String createEducacion(@RequestBody Educacion educacion){
+    public void createEducacion(@RequestBody Educacion educacion){
         interfaceEducacion.saveEducacion(educacion);
         
         // devuelve un string avisando si creo correctamente
-        return "La educacion fue creada correctamente";
+        //return "La educacion fue creada correctamente";
     }
     
     //--------------------------------------------------------------------------
@@ -57,26 +57,22 @@ public class EducacionController {
     //--------------------------------------------------------------------------
     @PutMapping("/educacion/editar/{id}")
     
-    public Educacion editEducacio(  @PathVariable Long id,
-                                    @RequestParam ("nombre_institucion") String nombreInstitucion,
-                                    @RequestParam ("fecha_ingreso") Date nuevaFechaIngreso,
-                                    @RequestParam ("fecha_salida") Date nuevaFechaSalida,
-                                    @RequestParam ("lugar") String nuevoLugar
-            ){
-    // busco la educacion en cuestion
-    Educacion educacion = interfaceEducacion.findEducacion(id);
-    
-    // esto tambien puede ir en service
-    // para desacoplar mejor aun el codigo en un nuevo metodo
-    educacion.setNombreInstitucion(nombreInstitucion);
-    educacion.setFechaIngreso(nuevaFechaIngreso);
-    educacion.setFechaEgreso(nuevaFechaSalida);
-    educacion.setLugar(nuevoLugar);
-    
-    interfaceEducacion.saveEducacion(educacion);
-    
-    // retorna la nueva educacion
-    return educacion;
+    public void editEducacio(  @PathVariable Long id, @RequestBody Educacion edu)
+    {
+        // busco la educacion en cuestion
+        Educacion educacion = interfaceEducacion.findEducacion(id);
+
+        // esto tambien puede ir en service
+        // para desacoplar mejor aun el codigo en un nuevo metodo
+        educacion.setNombreInstitucion(edu.getNombreInstitucion());
+        educacion.setFechaIngreso(edu.getFechaIngreso());
+        educacion.setFechaEgreso(edu.getFechaEgreso());
+        educacion.setLugar(edu.getLugar());
+
+        interfaceEducacion.saveEducacion(educacion);
+
+        // retorna la nueva educacion
+        //return educacion;
     }
     
 }
