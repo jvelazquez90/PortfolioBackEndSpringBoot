@@ -31,4 +31,9 @@ public class Proyecto {
     @Column(name = "proyectocol", length = 45)
     private String proyectoCol;
     
+    /*
+    @Column(name = "persona_id")
+    private int persona_id = 1;
+    */
+    
 }

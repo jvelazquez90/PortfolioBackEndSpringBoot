@@ -1,5 +1,9 @@
 package com.portfolio.SpringBoot.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,6 +46,42 @@ public class Educacion {
     @ManyToOne
     @JoinColumn(name = "persona_id")
     Persona persona;
-*/
     
+*/
+    /*
+    /*
+    public String getFechaIngreso(){
+        String nuevaFecha = convertirFecha(this.fechaIngreso);
+        return nuevaFecha;
+    }
+    
+    public String getFechaEgreso(){
+        String nuevaFecha = convertirFecha(this.fechaIngreso).replace(" ", " de ");
+        return nuevaFecha;
+    }
+    */
+    
+    /*
+    public String convertirFecha(Date fecha){
+        fecha.getMonth();
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+        return formato.format(fecha);
+    }
+    
+    
+    public Date setFechaIngreso(String fecha) throws ParseException {
+        Date formato = new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
+        return formato;
+    }
+    */
+    
+    /*
+    public Date getFechaIngresoDate(){
+        return this.fechaIngreso;
+    }
+    
+    public Date getFechaEgresoDate(){
+        return this.fechaEgreso;
+    }
+    */
 }
