@@ -37,44 +37,42 @@ public class ProyectoController {
     //--------------------------------------------------------------------------
     @PostMapping("/proyecto/crear")
     
-    public String createProyecto(@RequestBody Proyecto proyecto){
+    public void createProyecto(@RequestBody Proyecto proyecto){
         interfaceProyecto.saveProyecto(proyecto);
         
         // devuelve un string avisando si creo correctamente
-        return "El Proyecto fue creada correctamente";
+        //return "El Proyecto fue creada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @DeleteMapping("/proyecto/borrar/{id}")
     
-    public String deleteProyecto(@PathVariable Long id){
+    public void deleteProyecto(@PathVariable Long id){
         interfaceProyecto.deleteProyecto(id);
         
         // devuelve un string avisando si elimino correctamente
-        return "El Proyecto fue eliminada correctamente";
+        //return "El Proyecto fue eliminada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @PutMapping("/proyecto/editar/{id}")
     
-    public Proyecto editProyecto(   @PathVariable Long id,
-                                    @RequestParam ("nombre") String nuevoNombre,
-                                    @RequestParam ("duracion") String nuevaDuracion,
-                                    @RequestParam ("participantes") String nuevosParticipantes
-            ){
-    // busco el proyecto en cuestion
-    Proyecto proyecto = interfaceProyecto.findProyecto(id);
-    
-    // esto tambien puede ir en service
-    // para desacoplar mejor aun el codigo en un nuevo metodo
-    proyecto.setNombreProyecto(nuevaDuracion);
-    proyecto.setDuracion(nuevaDuracion);
-    proyecto.setParticipantes(nuevosParticipantes);
-    
-    interfaceProyecto.saveProyecto(proyecto);
-    
-    // retorna el nuevo Proyecto
-    return proyecto;
+    public void editProyecto(  @PathVariable Long id, @RequestBody Proyecto proy)
+    {
+        // busco el proyecto en cuestion
+        Proyecto proyecto = interfaceProyecto.findProyecto(id);
+
+        // esto tambien puede ir en service
+        // para desacoplar mejor aun el codigo en un nuevo metodo
+        proyecto.setNombreProyecto(proy.getNombreProyecto());
+        proyecto.setDuracion(proy.getDuracion());
+        proyecto.setParticipantes(proy.getParticipantes());
+        proyecto.setProyectoCol(proy.getProyectoCol());
+
+        interfaceProyecto.saveProyecto(proyecto);
+
+        // retorna el nuevo Proyecto
+        //return proyecto;
     }
     
 }
