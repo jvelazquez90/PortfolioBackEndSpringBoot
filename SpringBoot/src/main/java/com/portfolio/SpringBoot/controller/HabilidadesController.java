@@ -36,42 +36,40 @@ public class HabilidadesController {
     //--------------------------------------------------------------------------
     @PostMapping("/habilidades/crear")
     
-    public String createHabilidades(@RequestBody Habilidades habilidades){
+    public void createHabilidades(@RequestBody Habilidades habilidades){
         interfaceHabilidades.saveHabilidades(habilidades);
         
         // devuelve un string avisando si creo correctamente
-        return "La habilidad fue creada correctamente";
+        //return "La habilidad fue creada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @DeleteMapping("/habilidades/borrar/{id}")
     
-    public String deleteHabilidades(@PathVariable Long id){
+    public void deleteHabilidades(@PathVariable Long id){
         interfaceHabilidades.deleteHabilidades(id);
         
         // devuelve un string avisando si elimino correctamente
-        return "La habilidad fue eliminada correctamente";
+        //return "La habilidad fue eliminada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @PutMapping("/habilidades/editar/{id}")
     
-    public Habilidades editHabilidades(     @PathVariable Long id,
-                                            @RequestParam ("clasificacion") String nuevaClasificacion,
-                                            @RequestParam ("porcentaje") int nuevoPorcentaje
-            ){
-    // busco la habilidad en cuestion
-    Habilidades habilidades = interfaceHabilidades.findHabilidades(id);
-    
-    // esto tambien puede ir en service
-    // para desacoplar mejor aun el codigo en un nuevo metodo
-    habilidades.setNombre(nuevaClasificacion);
-    habilidades.setPorcentaje(nuevoPorcentaje);
-    
-    interfaceHabilidades.saveHabilidades(habilidades);
-    
-    // retorna la nueva habilidades
-    return habilidades;
+    public void editHabilidades(     @PathVariable Long id, @RequestBody Habilidades habilidad)
+    {
+        // busco la habilidad en cuestion
+        Habilidades habilidades = interfaceHabilidades.findHabilidades(id);
+
+        // esto tambien puede ir en service
+        // para desacoplar mejor aun el codigo en un nuevo metodo
+        habilidades.setNombre(habilidad.getNombre());
+        habilidades.setPorcentaje(habilidad.getPorcentaje());
+
+        interfaceHabilidades.saveHabilidades(habilidades);
+
+        // retorna la nueva habilidades
+        //return habilidades;
     }
     
 }

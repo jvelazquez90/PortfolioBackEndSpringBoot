@@ -28,8 +28,12 @@ public class Habilidades {
     private int porcentaje; // en este caso es integer porque es algo seteado y no un calculo
     
     // muchas habilidades pueden pertenecer a una pesona
+    /*
     @ManyToOne
     @JoinColumn(name = "persona_id")
     Persona persona;
+    */
+    @Column(name = "persona_id")
+    private int persona_id = 1;
     
 }
