@@ -36,43 +36,40 @@ public class AptitudController {
     //--------------------------------------------------------------------------
     @PostMapping("/aptitudes/crear")
     
-    public String createAptitudes(@RequestBody Aptitudes aptitud){
+    public void createAptitudes(@RequestBody Aptitudes aptitud){
         interfaceAptitudes.saveAptitudes(aptitud);
         
         // devuelve un string avisando si creo correctamente
-        return "La aptitud fue creada correctamente";
+        //return "La aptitud fue creada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @DeleteMapping("/aptitudes/borrar/{id}")
     
-    public String deleteAptitud(@PathVariable Long id){
+    public void deleteAptitud(@PathVariable Long id){
         interfaceAptitudes.deleteAptitud(id);
         
         // devuelve un string avisando si elimino correctamente
-        return "La aptitud fue eliminada correctamente";
+        //return "La aptitud fue eliminada correctamente";
     }
     
     //--------------------------------------------------------------------------
-    @PutMapping("/aptitud/editar/{id}")
+    @PutMapping("/aptitudes/editar/{id}")
     
-    public Aptitudes editPersona(     @PathVariable Long id,
-                                    @RequestParam ("nombre") String nuevoNombre,
-                                    @RequestParam ("clasificacion") String nuevaClasificacion
-                                    
-            ){
-    // busco la persona en cuestion
-    Aptitudes aptitud = interfaceAptitudes.findAptitud(id);
-    
-    // esto tambien puede ir en service
-    // para desacoplar mejor aun el codigo en un nuevo metodo
-    aptitud.setNombre(nuevoNombre);
-    aptitud.setClasificacion(nuevaClasificacion);
-    
-    interfaceAptitudes.saveAptitudes(aptitud);
-    
-    // retorna la nueva persona
-    return aptitud;
+    public void editPersona( @PathVariable Long id, @RequestBody Aptitudes apt)
+    {
+        // busco la persona en cuestion
+        Aptitudes aptitud = interfaceAptitudes.findAptitud(id);
+
+        // esto tambien puede ir en service
+        // para desacoplar mejor aun el codigo en un nuevo metodo
+        aptitud.setNombre(apt.getNombre());
+        aptitud.setClasificacion(apt.getClasificacion());
+
+        interfaceAptitudes.saveAptitudes(aptitud);
+
+        // retorna la nueva persona
+        //return aptitud;
     }
     
     

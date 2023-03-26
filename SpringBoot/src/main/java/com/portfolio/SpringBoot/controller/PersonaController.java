@@ -38,54 +38,46 @@ public class PersonaController {
     //--------------------------------------------------------------------------
     @PostMapping("/personas/crear")
     
-    public String createPersona(@RequestBody Persona persona){
+    public void createPersona(@RequestBody Persona persona){
         interfacePersona.savePersona(persona);
         
         // devuelve un string avisando si creo correctamente
-        return "La persona fue creada correctamente";
+        //return "La persona fue creada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @DeleteMapping("/personas/borrar/{id}")
     
-    public String deletePersona(@PathVariable Long id){
+    public void deletePersona(@PathVariable Long id){
         interfacePersona.deletePersona(id);
         
         // devuelve un string avisando si elimino correctamente
-        return "La persona fue eliminada correctamente";
+        //return "La persona fue eliminada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @PutMapping("/personas/editar/{id}")
     
-    public Persona editPersona(     @PathVariable Long id,
-                                    @RequestParam ("nombre") String nuevoNombre,
-                                    @RequestParam ("apellido") String nuevoApellido,
-                                    @RequestParam ("fecha_nacimiento") Date nuevaFechaNacimiento,
-                                    @RequestParam ("nacionalidad") String nuevaNacionalidad,
-                                    @RequestParam ("sexo") char nuevoSexo,
-                                    @RequestParam ("lugar_residencia") String nuevoLugarResidencia,
-                                    @RequestParam ("telefono") String nuevoTelefono,
-                                    @RequestParam ("acerca_de") String nuevoAcercaDe
-            ){
-    // busco la persona en cuestion
-    Persona persona = interfacePersona.findPersona(id);
-    
-    // esto tambien puede ir en service
-    // para desacoplar mejor aun el codigo en un nuevo metodo
-    persona.setApellido(nuevoApellido);
-    persona.setNombre(nuevoApellido);
-    persona.setFechaNacimiento(nuevaFechaNacimiento);
-    persona.setNacionalidad(nuevaNacionalidad);
-    persona.setSexo(nuevoSexo);
-    persona.setLugarResidencia(nuevoLugarResidencia);
-    persona.setTelefono(nuevoTelefono);
-    persona.setAcercaDe(nuevoAcercaDe);
-    
-    interfacePersona.savePersona(persona);
-    
-    // retorna la nueva persona
-    return persona;
+    public void editPersona(     @PathVariable Long id,@RequestBody Persona per)
+    {
+        // busco la persona en cuestion
+        Persona persona = interfacePersona.findPersona(id);
+
+        // esto tambien puede ir en service
+        // para desacoplar mejor aun el codigo en un nuevo metodo
+        persona.setNombre(per.getNombre());
+        persona.setApellido(per.getApellido());
+        persona.setFechaNacimiento(per.getFechaNacimiento());
+        persona.setNacionalidad(per.getNacionalidad());
+        persona.setSexo(per.getSexo());
+        persona.setLugarResidencia(per.getLugarResidencia());
+        persona.setTelefono(per.getTelefono());
+        persona.setAcercaDe(per.getAcercaDe());
+
+        interfacePersona.savePersona(persona);
+
+        // retorna la nueva persona
+        //return persona;
     }
     
 }
