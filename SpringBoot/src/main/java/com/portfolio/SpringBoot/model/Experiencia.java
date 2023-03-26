@@ -49,9 +49,12 @@ public class Experiencia {
     private String descripcion;
     
     // mucha experiencia pueden pertenecer a una pesona
+    /*
     @ManyToOne
     @JoinColumn(name = "persona_id")
     Persona persona;
+    */
+    private int persona_id = 1;
     
     //--------------------------------------------------------------------------
     // Convertir fecha ingreso
@@ -88,4 +91,14 @@ public class Experiencia {
         else
             return "";
     }
+    
+    public Date getFechaIngresoData(){
+        return this.fechaIngreso;
+    }
+    
+    public Date getFechaEgresoData(){
+        return this.fechaEgreso;
+    }
+    
+    
 }

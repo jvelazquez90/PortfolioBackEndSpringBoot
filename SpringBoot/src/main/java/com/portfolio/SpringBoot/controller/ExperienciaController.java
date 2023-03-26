@@ -37,50 +37,44 @@ public class ExperienciaController {
     //--------------------------------------------------------------------------
     @PostMapping("/experiencia/crear")
     
-    public String createExperiencia(@RequestBody Experiencia experiencia){
+    public void createExperiencia(@RequestBody Experiencia experiencia){
         interfaceExperiencia.saveExperiencia(experiencia);
         
         // devuelve un string avisando si creo correctamente
-        return "La experiencia fue creada correctamente";
+        //return "La experiencia fue creada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @DeleteMapping("/experiencia/borrar/{id}")
     
-    public String deleteExperiencia(@PathVariable Long id){
+    public void deleteExperiencia(@PathVariable Long id){
         interfaceExperiencia.deleteExperiencia(id);
         
         // devuelve un string avisando si elimino correctamente
-        return "La experiencia fue eliminada correctamente";
+        //return "La experiencia fue eliminada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @PutMapping("/experiencia/editar/{id}")
     
-    public Experiencia editExperiencia(     @PathVariable Long id,
-                                            @RequestParam ("nombre_empresa") String nuevaEmpresa,
-                                            @RequestParam ("cargo") String nuevoCargo,
-                                            @RequestParam ("fecha_ingreso") Date nuevaFechaIngreso,
-                                            @RequestParam ("fecha_salida") Date nuevaFechaSalida,
-                                            @RequestParam ("es_trabajo_actual") boolean trabajoActual,
-                                            @RequestParam ("descripcion") String nuevaDescripcion
-            ){
-    // busco la experiencia en cuestion
-    Experiencia experiencia = interfaceExperiencia.findExperiencia(id);
-    
-    // esto tambien puede ir en service
-    // para desacoplar mejor aun el codigo en un nuevo metodo
-    experiencia.setNombreEmpresa(nuevaEmpresa);
-    experiencia.setCargo(nuevoCargo);
-    experiencia.setFechaIngreso(nuevaFechaIngreso);
-    experiencia.setFechaEgreso(nuevaFechaSalida);
-    experiencia.setEsTrabajoActual(trabajoActual);
-    experiencia.setDescripcion(nuevaDescripcion);
-    
-    interfaceExperiencia.saveExperiencia(experiencia);
-    
-    // retorna la nueva experiencia
-    return experiencia;
+    public void editExperiencia(     @PathVariable Long id,@RequestBody Experiencia exp)
+    {
+        // busco la experiencia en cuestion
+        Experiencia experiencia = interfaceExperiencia.findExperiencia(id);
+
+        // esto tambien puede ir en service
+        // para desacoplar mejor aun el codigo en un nuevo metodo
+        experiencia.setNombreEmpresa(exp.getNombreEmpresa());
+        experiencia.setCargo(exp.getCargo());
+        experiencia.setFechaIngreso(exp.getFechaIngresoData());
+        experiencia.setFechaEgreso(exp.getFechaEgresoData());
+        experiencia.setEsTrabajoActual(exp.isEsTrabajoActual());
+        experiencia.setDescripcion(exp.getDescripcion());
+
+        interfaceExperiencia.saveExperiencia(experiencia);
+
+        // retorna la nueva experiencia
+        //return experiencia;
     }
     
 }
