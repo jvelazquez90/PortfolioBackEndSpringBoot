@@ -32,7 +32,7 @@ public class RedesSociales {
     private String imagen;
     
     // muchas redes sociales pueden pertenecer a una pesona
-    @ManyToOne
+    //@ManyToOne
     @JoinColumn(name = "persona_id")
-    Persona persona;
+    private int persona_id = 1;
 }

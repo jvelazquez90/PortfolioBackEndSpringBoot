@@ -36,42 +36,41 @@ public class RedesSocialesController {
     //--------------------------------------------------------------------------
     @PostMapping("/redesSociales/crear")
     
-    public String createRedesSociales(@RequestBody RedesSociales redesSociales){
+    public void createRedesSociales(@RequestBody RedesSociales redesSociales){
         interfaceRedesSociales.saveRedesSociales(redesSociales);
         
         // devuelve un string avisando si creo correctamente
-        return "La Red Social fue creada correctamente";
+        //return "La Red Social fue creada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @DeleteMapping("/redesSociales/borrar/{id}")
     
-    public String deleteRedesSociales(@PathVariable Long id){
+    public void deleteRedesSociales(@PathVariable Long id){
         interfaceRedesSociales.deleteRedesSociales(id);
         
         // devuelve un string avisando si elimino correctamente
-        return "La Red Social fue eliminada correctamente";
+        //return "La Red Social fue eliminada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @PutMapping("/redesSociales/editar/{id}")
     
-    public RedesSociales editRedesSociales(     @PathVariable Long id,
-                                                @RequestParam ("nombre") String nuevoNombre,
-                                                @RequestParam ("link") String nuevoLink
-            ){
-    // busco la Red Social en cuestion
-    RedesSociales redesSociales = interfaceRedesSociales.findRedesSociales(id);
-    
-    // esto tambien puede ir en service
-    // para desacoplar mejor aun el codigo en un nuevo metodo
-    redesSociales.setNombre(nuevoNombre);
-    redesSociales.setLink(nuevoLink);
-    
-    interfaceRedesSociales.saveRedesSociales(redesSociales);
-    
-    // retorna la nueva Red Social
-    return redesSociales;
+    public void editRedesSociales( @PathVariable Long id, @RequestBody RedesSociales rs)
+    {
+        // busco la Red Social en cuestion
+        RedesSociales redesSociales = interfaceRedesSociales.findRedesSociales(id);
+
+        // esto tambien puede ir en service
+        // para desacoplar mejor aun el codigo en un nuevo metodo
+ 
+        redesSociales.setNombre(rs.getNombre());
+        redesSociales.setLink(rs.getLink());
+
+        interfaceRedesSociales.saveRedesSociales(redesSociales);
+
+        // retorna la nueva Red Social
+        //return redesSociales;
     }
     
 }
