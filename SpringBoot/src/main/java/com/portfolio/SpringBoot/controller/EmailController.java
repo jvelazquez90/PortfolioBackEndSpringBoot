@@ -37,40 +37,40 @@ public class EmailController {
     //--------------------------------------------------------------------------
     @PostMapping("/email/crear")
     
-    public String createEmail(@RequestBody Email email){
+    public void createEmail(@RequestBody Email email){
         interfaceEmail.saveEmail(email);
         
         // devuelve un string avisando si creo correctamente
-        return "El email fue creada correctamente";
+        //return "El email fue creada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @DeleteMapping("/email/borrar/{id}")
     
-    public String deleteEmail(@PathVariable Long id){
+    public void deleteEmail(@PathVariable Long id){
         interfaceEmail.deleteEmail(id);
         
         // devuelve un string avisando si elimino correctamente
-        return "El email fue eliminada correctamente";
+        //return "El email fue eliminada correctamente";
     }
     
     //--------------------------------------------------------------------------
     @PutMapping("/email/editar/{id}")
     
-    public Email editEmail(     @PathVariable Long id,
-                                @RequestParam ("email") String nuevoEmail
-            ){
-    // busco el email en cuestion
-    Email email = interfaceEmail.findEmail(id);
-    
-    // esto tambien puede ir en service
-    // para desacoplar mejor aun el codigo en un nuevo metodo
-    email.setEmail(nuevoEmail);
-    
-    interfaceEmail.saveEmail(email);
-    
-    // retorna el nuevo email
-    return email;
+    public void editEmail(     @PathVariable Long id,
+                                @RequestBody Email em)
+    {
+        // busco el email en cuestion
+        Email email = interfaceEmail.findEmail(id);
+
+        // esto tambien puede ir en service
+        // para desacoplar mejor aun el codigo en un nuevo metodo
+        email.setEmail(em.getEmail());
+
+        interfaceEmail.saveEmail(email);
+
+        // retorna el nuevo email
+        //return email;
     }
     
 }
