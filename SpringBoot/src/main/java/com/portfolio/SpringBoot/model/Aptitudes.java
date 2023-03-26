@@ -28,7 +28,11 @@ public class Aptitudes {
     private String clasificacion;
     
     // muchas aptitudes pueden pertenecer a una pesona
+    /*
     @ManyToOne
     @JoinColumn(name = "persona_id")
     Persona persona;
+    */
+    @Column(name = "persona_id")
+    private int persona_id = 1;
 }

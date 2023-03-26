@@ -1,5 +1,6 @@
 package com.portfolio.SpringBoot.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -15,6 +16,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter @Setter
 @Entity
@@ -29,9 +31,11 @@ public class Educacion {
     @Column(name = "nombre_institucion", length = 255)
     private String nombreInstitucion;
     
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha_ingreso")
     private Date fechaIngreso;
     
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha_salida")
     private Date fechaEgreso;
     

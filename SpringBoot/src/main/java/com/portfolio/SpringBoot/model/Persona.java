@@ -1,5 +1,6 @@
 package com.portfolio.SpringBoot.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Column;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter @Setter
 @Entity
@@ -27,6 +29,8 @@ public class Persona {
     @Column(name = "apellido", length = 45)
     private String apellido;
     
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha_nacimiento")
     private Date fechaNacimiento;
     
@@ -54,6 +58,7 @@ public class Persona {
     //--------------------------------------------------------------------------
     
     // Se agregan metodos para presentar fecha
+    /*
     public String getFechaNacimiento(){
         String nuevaFecha = convertirFecha().replace(" ", " de ");
         return nuevaFecha;
@@ -65,4 +70,5 @@ public class Persona {
         SimpleDateFormat formato = new SimpleDateFormat("dd MMMM yyyy");
         return formato.format(fechaNacimiento);
     }
+    */
 }

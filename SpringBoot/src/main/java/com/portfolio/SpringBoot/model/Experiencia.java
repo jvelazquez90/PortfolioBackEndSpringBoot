@@ -1,5 +1,6 @@
 package com.portfolio.SpringBoot.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.persistence.Column;
@@ -12,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Getter @Setter
 @Entity
@@ -29,9 +31,13 @@ public class Experiencia {
     @Column(name = "cargo", length = 80)
     private String cargo;
     
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha_ingreso")
     private Date fechaIngreso;
     
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @JsonFormat(pattern = "yyyy-MM-dd")
     @Column(name = "fecha_salida")
     private Date fechaEgreso;
     
@@ -58,6 +64,7 @@ public class Experiencia {
     
     //--------------------------------------------------------------------------
     // Convertir fecha ingreso
+    
     
     public String getFechaIngreso(){
         String nuevaFecha = convertirFechaIngreso().replace(" ", " de ");
