@@ -20,7 +20,7 @@ public class RedesSocialesService implements IRedesSocialesService{
             "Instagram",
             "LinkedIn",
             "Skype",
-            "Team",
+            "Teams",
             "Telegram",
             "Twitter",
             "WhatApp",
@@ -53,7 +53,7 @@ public class RedesSocialesService implements IRedesSocialesService{
     //--------------------------------------------------------------------------
     @Override
     public void saveRedesSociales(RedesSociales rs) {
-        /*
+        
         RedesSociales redSocial = new RedesSociales();
         
         String assets = "assets/redes-sociales/";
@@ -67,8 +67,14 @@ public class RedesSocialesService implements IRedesSocialesService{
         }
         
         redSocial.setLink(rs.getLink());
-        */
         
+        
+        redesSocialesRepository.save(redSocial);
+    }
+    
+    //--------------------------------------------------------------------------
+    @Override
+    public void save(RedesSociales rs) {
         redesSocialesRepository.save(rs);
     }
 
@@ -84,5 +90,4 @@ public class RedesSocialesService implements IRedesSocialesService{
         RedesSociales buscarRedSocial = redesSocialesRepository.findById(id).orElse(null);
         return buscarRedSocial;
     }
-    
 }

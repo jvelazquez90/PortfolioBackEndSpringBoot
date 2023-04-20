@@ -3,6 +3,7 @@ package com.portfolio.SpringBoot.controller;
 import com.portfolio.SpringBoot.model.RedesSociales;
 import com.portfolio.SpringBoot.service.RedesSocialesService;
 import java.util.List;
+import static jdk.nashorn.internal.objects.NativeString.toLowerCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -64,10 +65,14 @@ public class RedesSocialesController {
         // esto tambien puede ir en service
         // para desacoplar mejor aun el codigo en un nuevo metodo
  
+        
         redesSociales.setNombre(rs.getNombre());
         redesSociales.setLink(rs.getLink());
+        redesSociales.setImagen("assets/redes-sociales/" + 
+                                toLowerCase(rs.getNombre()) + 
+                                ".png");
 
-        interfaceRedesSociales.saveRedesSociales(redesSociales);
+        interfaceRedesSociales.save(redesSociales);
 
         // retorna la nueva Red Social
         //return redesSociales;

@@ -9,8 +9,12 @@ public interface IRedesSocialesService {
     public List<RedesSociales> getRedesSociales();
     
     //--------------------------------------------------------------------------
-    // metodo para dar de alta un red social
+    // metodo para dar de alta una red social
     public void saveRedesSociales(RedesSociales redesSociales);
+    
+    //--------------------------------------------------------------------------
+    // metodo para editar una red social
+    public void save(RedesSociales redesSociales);
     
     //--------------------------------------------------------------------------
     // metodo para borrar una red social
