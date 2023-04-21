@@ -20,7 +20,7 @@ public class UsuarioController  {
     
     @PostMapping("/login")
     public ResponseEntity<?> loginUser(@RequestBody Usuario data) {
-        System.out.print("Usuario: " + data.getUser() + "/nPassword: " + data.getPassword());
+        
         Usuario user = userRepo.findByUser(data.getUser());
         
         //System.out.print(user);
